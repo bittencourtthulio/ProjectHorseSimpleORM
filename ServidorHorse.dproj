@@ -149,7 +149,6 @@
         <DCCReference Include="src\Controller\ServerHorse.Controller.pas"/>
         <DCCReference Include="src\Controller\ServerHorse.Controller.Generic.pas"/>
         <DCCReference Include="src\Routers\ServerHorse.Routers.Users.pas"/>
-        <DCCReference Include="src\Sockets\ServidorHorse.Sockets.Bird.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -14,15 +14,10 @@ uses
   ServerHorse.Controller in 'src\Controller\ServerHorse.Controller.pas',
   ServerHorse.Controller.Generic in 'src\Controller\ServerHorse.Controller.Generic.pas',
   ServerHorse.Routers.Users in 'src\Routers\ServerHorse.Routers.Users.pas',
-  ServidorHorse.Sockets.Bird in 'src\Sockets\ServidorHorse.Sockets.Bird.pas',
   System.Classes;
 
 begin
   ServerHorse.Routers.Users.Registry;
-  ServidorHorse.Sockets.Bird.Registry;
-
-
-
   THorse.Listen(9000);
 
 
