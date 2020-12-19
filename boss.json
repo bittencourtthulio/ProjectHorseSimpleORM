@@ -1,0 +1,16 @@
+{
+	"name": "ServidorHorse",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./",
+	"projects": [],
+	"dependencies": {
+		"github.com/hashload/horse": "^v2.0.6",
+		"https://github.com/bittencourtthulio/simpleorm": "^2.02.01",
+		"https://github.com/hashload/horse-cors": "^1.0.2",
+		"https://github.com/hashload/jhonson": "^1.0.7",
+		"https://github.com/mateusvicente100/bird-socket-server": "^1.0.8",
+		"https://github.com/viniciussanchez/dataset-serialize": "^v2.2.1"
+	}
+}
