@@ -7,8 +7,7 @@ uses
   Horse,
   Horse.Jhonson,
   Horse.CORS,
-  ServerHorse.Controller,
-  ServidorHorse.Sockets.Bird;
+  ServerHorse.Controller;
 
 procedure Registry;
 
@@ -36,8 +35,6 @@ begin
       try
         TController.New.USERS.This.Insert(vBody);
         Res.Status(200).Send('');
-
-        ServidorHorse.Sockets.Bird.SendMessage(TController.New.USERS.This.Find.ToJSON);
       except
         Res.Status(500).Send('');
       end;
@@ -49,7 +46,6 @@ begin
       try
         TController.New.USERS.This.Delete('ID', Req.Params['id']);
         Res.Status(200).Send('');
-        ServidorHorse.Sockets.Bird.SendMessage(TController.New.USERS.This.Find.ToJSON);
       except
         Res.Status(500).Send('');
       end;
