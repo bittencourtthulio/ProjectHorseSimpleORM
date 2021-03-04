@@ -40,6 +40,20 @@ begin
       end;
     end)
 
+  .Put('/users',
+    procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    var
+      vBody : TJsonObject;
+    begin
+      vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
+      try
+        TController.New.USERS.This.Update(vBody);
+        Res.Status(200).Send('');
+      except
+        Res.Status(500).Send('');
+      end;
+    end)
+
   .Delete('/users/:id',
   procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     begin
