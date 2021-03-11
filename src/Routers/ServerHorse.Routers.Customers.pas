@@ -1,4 +1,4 @@
-unit ServerHorse.Routers.Users;
+unit ServerHorse.Routers.Customers;
 
 interface
 
@@ -15,7 +15,8 @@ implementation
 
 uses
   System.Classes, ServerHorse.Controller.Interfaces,
-  ServerHorse.Model.Entity.USERS, System.SysUtils, ServerHorse.Utils;
+  ServerHorse.Model.Entity.CUSTOMERS, System.SysUtils,
+  ServerHorse.Utils;
 
 
 procedure Registry;
@@ -24,12 +25,12 @@ begin
   .Use(Jhonson)
   .Use(CORS)
 
-  .Get('/users',
+  .Get('/customers',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
-      iController : iControllerEntity<TUSERS>;
+      iController : iControllerEntity<TCUSTOMERS>;
     begin
-      iController := TController.New.USERS;
+      iController := TController.New.CUSTOMERS;
       iController.This
         .DAO
           .SQL
@@ -41,39 +42,39 @@ begin
       Res.Send<TJsonArray>(iController.This.DataSetAsJsonArray);
     end)
 
-  .Post('/users',
+  .Post('/customers',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
       vBody : TJsonObject;
     begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
-        TController.New.USERS.This.Insert(vBody);
+        TController.New.CUSTOMERS.This.Insert(vBody);
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');
       end;
     end)
 
-  .Put('/users',
+  .Put('/customers',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
       vBody : TJsonObject;
     begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
-        TController.New.USERS.This.Update(vBody);
+        TController.New.CUSTOMERS.This.Update(vBody);
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');
       end;
     end)
 
-  .Delete('/users/:id',
+  .Delete('/customers/:id',
   procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     begin
       try
-        TController.New.USERS.This.Delete('ID', Req.Params['id']);
+        TController.New.CUSTOMERS.This.Delete('ID', Req.Params['id']);
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');

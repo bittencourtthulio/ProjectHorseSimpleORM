@@ -5,17 +5,20 @@ interface
 uses
   ServerHorse.Model.Entity.USERS,
   ServerHorse.Controller.Generic,
-  ServerHorse.Controller.Interfaces;
+  ServerHorse.Controller.Interfaces,
+  ServerHorse.Model.Entity.CUSTOMERS;
 
 type
   TController = class(TInterfacedObject, iController)
     private
       FUsers : iControllerEntity<TUSERS>;
+      FCustomers : iControllerEntity<TCUSTOMERS>;
     public
       constructor Create;
       destructor Destroy; override;
       class function New : iController;
       function USERS : iControllerEntity<TUSERS>;
+      function CUSTOMERS : iControllerEntity<TCUSTOMERS>;
   end;
 
 implementation
@@ -25,6 +28,14 @@ implementation
 constructor TController.Create;
 begin
 
+end;
+
+function TController.CUSTOMERS: iControllerEntity<TCUSTOMERS>;
+begin
+  if not Assigned(FCustomers) then
+    FCustomers := TControllerGeneric<TCUSTOMERS>.New(Self);
+
+  Result := FCustomers;
 end;
 
 destructor TController.Destroy;

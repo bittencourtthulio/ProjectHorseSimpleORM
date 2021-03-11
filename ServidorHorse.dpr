@@ -14,9 +14,13 @@ uses
   ServerHorse.Controller in 'src\Controller\ServerHorse.Controller.pas',
   ServerHorse.Controller.Generic in 'src\Controller\ServerHorse.Controller.Generic.pas',
   ServerHorse.Routers.Users in 'src\Routers\ServerHorse.Routers.Users.pas',
-  System.Classes;
+  System.Classes,
+  ServerHorse.Model.Entity.CUSTOMERS in 'src\Model\Entity\ServerHorse.Model.Entity.CUSTOMERS.pas',
+  ServerHorse.Routers.Customers in 'src\Routers\ServerHorse.Routers.Customers.pas',
+  ServerHorse.Utils in 'src\Utils\ServerHorse.Utils.pas';
 
 begin
   ServerHorse.Routers.Users.Registry;
+  ServerHorse.Routers.Customers.Registry;
   THorse.Listen(9000);
 end.

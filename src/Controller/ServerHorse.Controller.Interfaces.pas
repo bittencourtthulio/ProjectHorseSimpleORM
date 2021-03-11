@@ -4,7 +4,8 @@ interface
 
 uses
   ServerHorse.Model.DAO,
-  ServerHorse.Model.Entity.USERS;
+  ServerHorse.Model.Entity.USERS,
+  ServerHorse.Model.Entity.CUSTOMERS;
 
 type
   iControllerEntity<T : class> = interface;
@@ -12,6 +13,7 @@ type
   iController = interface
     ['{6A60E341-CB38-4034-B924-FB9B49D98577}']
     function USERS : iControllerEntity<TUSERS>;
+    function CUSTOMERS : iControllerEntity<TCUSTOMERS>;
   end;
 
   iControllerEntity<T : class> = interface
