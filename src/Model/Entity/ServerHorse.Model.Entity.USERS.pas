@@ -30,11 +30,12 @@ type
     procedure SetLASTTRANSACTION(const Value: TDateTime);
     procedure SetCPF(const Value: String);
     procedure SetCNPJ(const Value: String);
+    function GetGUUID: String;
   public
     constructor Create;
     destructor Destroy; override;
     [Campo('GUUID'), Pk]
-    property GUUID : String read FGUUID write SetGUUID;
+    property GUUID : String read GetGUUID write SetGUUID;
     [Campo('NAME')]
     property NAME :String read GetNAME write SetNAME;
     [Campo('PHONE')]
@@ -54,6 +55,9 @@ type
 end;
 
 implementation
+
+uses
+  System.SysUtils;
 
 constructor TUsers.Create;
 begin
@@ -99,6 +103,11 @@ end;
 procedure TUsers.SetNAME (const Value :String);
 begin
   FNAME := Value;
+end;
+
+function TUsers.GetGUUID: String;
+begin
+  Result := FGUUID;
 end;
 
 function TUsers.GetNAME :String;

@@ -42,19 +42,17 @@ end;
 
 function TServerUtils.LikeFind(aReq: THorseRequest): String;
 var
-  aSearch : string;
+  aSearch, aFields : string;
   FieldsList : TStringList;
   I: Integer;
 begin
   FieldsList := TStringList.Create;
   Result := '';
+  aFields := '';
   try
-    try
-      FieldsList.CommaText := aReq.Query['searchfields'];
-      aSearch := aReq.Query['searchvalue'];
-    except
-      //
-    end;
+    aReq.Query.TryGetValue('searchfields', aFields);
+    aReq.Query.TryGetValue('searchvalue', aSearch);
+    FieldsList.CommaText := aFields;
 
     if FieldsList.Count > 0 then
     begin
@@ -77,18 +75,11 @@ function TServerUtils.OrderByFind(aReq: THorseRequest): String;
 var
   aOrder, aSort : string;
   FieldsList : TStringList;
-  I: Integer;
 begin
   FieldsList := TStringList.Create;
   Result := '';
-
-  try
-    aSort := aReq.Query['sort'];
-    aOrder := aReq.Query['order'];
-  except
-    //
-  end;
-
+  aReq.Query.TryGetValue('sort', aSort);
+  aReq.Query.TryGetValue('order', aOrder);
   Result := aSort + ' ' + aOrder;
 end;
 

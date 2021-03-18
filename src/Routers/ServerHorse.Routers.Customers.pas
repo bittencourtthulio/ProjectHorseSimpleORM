@@ -44,6 +44,22 @@ begin
       Res.Send<TJsonArray>(iController.This.DataSetAsJsonArray);
     end)
 
+  .Get('/customers/:ID',
+    procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    var
+      iController : iControllerEntity<TCUSTOMERS>;
+    begin
+      iController := TController.New.CUSTOMERS;
+      iController.This
+        .DAO
+          .SQL
+            .Where('GUUID = ' + QuotedStr('{' + Req.Params['ID'] + '}' ))
+          .&End
+        .Find;
+
+      Res.Send<TJsonArray>(iController.This.DataSetAsJsonArray);
+    end)
+
   .Post('/customers',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
