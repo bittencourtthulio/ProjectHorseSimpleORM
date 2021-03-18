@@ -75,7 +75,7 @@ begin
       end;
     end)
 
-  .Put('/users',
+  .Put('/users/:ID',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
       vBody : TJsonObject;
@@ -83,8 +83,9 @@ begin
     begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
+        vBody.AddPair('guuid', '{' + Req.Params['ID'] + '}' );
         TController.New.USERS.This.Update(vBody);
-        Res.Status(200).Send('');
+        Res.Status(200).Send<TJsonObject>(vBody);
       except
         Res.Status(500).Send('');
       end;
