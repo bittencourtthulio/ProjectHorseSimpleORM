@@ -18,8 +18,7 @@ uses
   ServerHorse.Controller.Interfaces,
   ServerHorse.Model.Entity.USERS,
   System.SysUtils,
-  ServerHorse.Utils,
-  System.NetEncoding;
+  ServerHorse.Utils;
 
 
 procedure Registry;
@@ -82,7 +81,7 @@ begin
     aTeste: string;
   begin
       try
-        TController.New.USERS.This.Delete('guuid', QuotedStr(TNetEncoding.Base64.Decode(Req.Params['id'])));
+        TController.New.USERS.This.Delete('guuid', QuotedStr('{' + Req.Params['id'] + '}'));
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');

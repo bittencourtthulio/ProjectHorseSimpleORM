@@ -65,7 +65,8 @@ uses
   System.SysUtils,
   ServerHorse.Model.Connection,
   System.Classes,
-  GBJSON.Helper, GBJSON.Interfaces;
+  GBJSON.Helper,
+  GBJSON.Interfaces;
 
 constructor TDAOGeneric<T>.Create;
 begin
@@ -133,7 +134,7 @@ var
   ateste: Integer;
   ateste2: string;
 begin
-  FDAO.Find;
+  FDAO.Find(False);
   Result := FDataSource.DataSet.ToJSONArray;
 end;
 
@@ -148,6 +149,7 @@ var
 begin
   aObj := T.Create;
   try
+    TGBJSONConfig.GetInstance.CaseDefinition(TCaseDefinition.cdLower);
     TGBJSONDefault.Serializer<T>(False).JsonObjectToObject(aObj, aJsonObject);
     aObj.fromJSONObject(aJsonObject);
     FDAO.Insert(aObj);

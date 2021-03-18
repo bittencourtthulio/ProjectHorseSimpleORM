@@ -14,9 +14,11 @@ procedure Registry;
 implementation
 
 uses
-  System.Classes, ServerHorse.Controller.Interfaces,
-  ServerHorse.Model.Entity.CUSTOMERS, System.SysUtils,
-  ServerHorse.Utils, System.NetEncoding;
+  System.Classes,
+  ServerHorse.Controller.Interfaces,
+  ServerHorse.Model.Entity.CUSTOMERS,
+  System.SysUtils,
+  ServerHorse.Utils;
 
 
 procedure Registry;
@@ -75,7 +77,7 @@ begin
   procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     begin
       try
-        TController.New.CUSTOMERS.This.Delete('guuid', TNetEncoding.Base64.Decode(Req.Params['id']));
+        TController.New.CUSTOMERS.This.Delete('guuid', QuotedStr('{' + Req.Params['id'] + '}'));
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');
