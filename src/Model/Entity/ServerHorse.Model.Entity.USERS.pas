@@ -10,27 +10,47 @@ type
   TUsers = class
   private
     FNAME :String;
-    FPHONE :Integer;
+    FPHONE :String;
     FOCCUPATION :String;
-    FID: integer;
+    FGUUID: String;
+    FBALANCE: Currency;
+    FBIRTHDATE: TDateTime;
+    FLASTTRANSACTION: TDateTime;
+    FCPF: String;
+    FCNPJ: String;
     procedure SetNAME (const Value :String);
     function GetNAME :String;
-    procedure SetPHONE (const Value :Integer);
-    function GetPHONE :Integer;
+    procedure SetPHONE (const Value :String);
+    function GetPHONE :String;
     procedure SetOCCUPATION (const Value :String);
     function GetOCCUPATION :String;
-    procedure SetID(const Value: integer);
+    procedure SetGUUID(const Value: String);
+    procedure SetBALANCE(const Value: Currency);
+    procedure SetBIRTHDATE(const Value: TDateTime);
+    procedure SetLASTTRANSACTION(const Value: TDateTime);
+    procedure SetCPF(const Value: String);
+    procedure SetCNPJ(const Value: String);
   public
     constructor Create;
     destructor Destroy; override;
-    [Campo('ID'), AutoInc, Pk]
-    property ID : integer read FID write SetID;
+    [Campo('GUUID'), Pk]
+    property GUUID : String read FGUUID write SetGUUID;
     [Campo('NAME')]
     property NAME :String read GetNAME write SetNAME;
     [Campo('PHONE')]
-    property PHONE :Integer read GetPHONE write SetPHONE;
+    property PHONE :String read GetPHONE write SetPHONE;
     [Campo('OCCUPATION')]
     property OCCUPATION :String read GetOCCUPATION write SetOCCUPATION;
+    [Campo('BALANCE')]
+    property BALANCE : Currency read FBALANCE write SetBALANCE;
+    [Campo('BIRTHDATE')]
+    property BIRTHDATE : TDateTime read FBIRTHDATE write SetBIRTHDATE;
+    [Campo('LASTTRANSACTION')]
+    property LASTTRANSACTION : TDateTime read FLASTTRANSACTION write SetLASTTRANSACTION;
+    [Campo('CPF')]
+    property CPF : String read FCPF write SetCPF;
+    [Campo('CNPJ')]
+    property CNPJ : String read FCNPJ write SetCNPJ;
 end;
 
 implementation
@@ -46,9 +66,34 @@ begin
   inherited;
 end;
 
-procedure TUsers.SetID(const Value: integer);
+procedure TUsers.SetGUUID(const Value: String);
 begin
-  FID := Value;
+  FGUUID := Value;
+end;
+
+procedure TUsers.SetLASTTRANSACTION(const Value: TDateTime);
+begin
+  FLASTTRANSACTION := Value;
+end;
+
+procedure TUsers.SetBALANCE(const Value: Currency);
+begin
+  FBALANCE := Value;
+end;
+
+procedure TUsers.SetBIRTHDATE(const Value: TDateTime);
+begin
+  FBIRTHDATE := Value;
+end;
+
+procedure TUsers.SetCNPJ(const Value: String);
+begin
+  FCNPJ := Value;
+end;
+
+procedure TUsers.SetCPF(const Value: String);
+begin
+  FCPF := Value;
 end;
 
 procedure TUsers.SetNAME (const Value :String);
@@ -61,12 +106,12 @@ begin
   Result := FNAME;
 end;
 
-procedure TUsers.SetPHONE (const Value :Integer);
+procedure TUsers.SetPHONE (const Value :String);
 begin
   FPHONE := Value;
 end;
 
-function TUsers.GetPHONE :Integer;
+function TUsers.GetPHONE :String;
 begin
   Result := FPHONE;
 end;

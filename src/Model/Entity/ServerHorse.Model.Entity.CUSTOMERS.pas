@@ -10,15 +10,15 @@ type
   TCUSTOMERS = class
   private
     FNAME :String;
-    FID: integer;
+    FGUUID: String;
     procedure SetNAME (const Value :String);
     function GetNAME :String;
-    procedure SetID(const Value: integer);
+    procedure SetGUUID(const Value: String);
   public
     constructor Create;
     destructor Destroy; override;
-    [Campo('ID'), AutoInc, Pk]
-    property ID : integer read FID write SetID;
+    [Campo('GUUID'), Pk]
+    property GUUID : String read FGUUID write SetGUUID;
     [Campo('NAME')]
     property NAME :String read GetNAME write SetNAME;
 end;
@@ -36,9 +36,9 @@ begin
   inherited;
 end;
 
-procedure TCUSTOMERS.SetID(const Value: integer);
+procedure TCUSTOMERS.SetGUUID(const Value: String);
 begin
-  FID := Value;
+  FGUUID := Value;
 end;
 
 procedure TCUSTOMERS.SetNAME (const Value :String);

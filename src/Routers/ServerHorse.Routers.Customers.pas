@@ -16,7 +16,7 @@ implementation
 uses
   System.Classes, ServerHorse.Controller.Interfaces,
   ServerHorse.Model.Entity.CUSTOMERS, System.SysUtils,
-  ServerHorse.Utils;
+  ServerHorse.Utils, System.NetEncoding;
 
 
 procedure Registry;
@@ -49,8 +49,9 @@ begin
     begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
+        vBody.AddPair('guuid', TGUID.NewGuid.ToString());
         TController.New.CUSTOMERS.This.Insert(vBody);
-        Res.Status(200).Send('');
+        Res.Status(200).Send<TJsonObject>(vBody);
       except
         Res.Status(500).Send('');
       end;
@@ -64,7 +65,7 @@ begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
         TController.New.CUSTOMERS.This.Update(vBody);
-        Res.Status(200).Send('');
+        Res.Status(200).Send<TJsonObject>(vBody);
       except
         Res.Status(500).Send('');
       end;
@@ -74,7 +75,7 @@ begin
   procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     begin
       try
-        TController.New.CUSTOMERS.This.Delete('ID', Req.Params['id']);
+        TController.New.CUSTOMERS.This.Delete('guuid', TNetEncoding.Base64.Decode(Req.Params['id']));
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');

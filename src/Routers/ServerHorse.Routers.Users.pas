@@ -14,8 +14,12 @@ procedure Registry;
 implementation
 
 uses
-  System.Classes, ServerHorse.Controller.Interfaces,
-  ServerHorse.Model.Entity.USERS, System.SysUtils, ServerHorse.Utils;
+  System.Classes,
+  ServerHorse.Controller.Interfaces,
+  ServerHorse.Model.Entity.USERS,
+  System.SysUtils,
+  ServerHorse.Utils,
+  System.NetEncoding;
 
 
 procedure Registry;
@@ -48,8 +52,9 @@ begin
     begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
+        vBody.AddPair('guuid', TGUID.NewGuid.ToString());
         TController.New.USERS.This.Insert(vBody);
-        Res.Status(200).Send('');
+        Res.Status(200).Send<TJsonObject>(vBody);
       except
         Res.Status(500).Send('');
       end;
@@ -59,6 +64,7 @@ begin
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
       vBody : TJsonObject;
+    ateste: string;
     begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
@@ -71,9 +77,12 @@ begin
 
   .Delete('/users/:id',
   procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
-    begin
+
+  var
+    aTeste: string;
+  begin
       try
-        TController.New.USERS.This.Delete('ID', Req.Params['id']);
+        TController.New.USERS.This.Delete('guuid', QuotedStr(TNetEncoding.Base64.Decode(Req.Params['id'])));
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');
