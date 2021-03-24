@@ -18,12 +18,14 @@ uses
   ServerHorse.Controller.Interfaces,
   ServerHorse.Model.Entity.CUSTOMERS,
   System.SysUtils,
-  ServerHorse.Utils;
+  ServerHorse.Utils,
+  Horse.Paginate;
 
 
 procedure Registry;
 begin
   THorse
+  .Use(Paginate)
   .Use(Jhonson)
   .Use(CORS)
 
