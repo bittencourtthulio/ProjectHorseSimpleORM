@@ -9,6 +9,8 @@
 		"github.com/hashload/horse": "^v2.0.6",
 		"https://github.com/bittencourtthulio/horse-paginate": ">0.0.0",
 		"https://github.com/bittencourtthulio/simpleorm": "^2.02.04",
+		"https://github.com/cachopaweb/horse-server-static": "^1.0.0",
+		"https://github.com/carloshe/horse-staticfiles": "^1.0.0",
 		"https://github.com/gabrielbaltazar/gbjson": "^1.0.7",
 		"https://github.com/hashload/horse-cors": "^1.0.2",
 		"https://github.com/hashload/jhonson": "^1.0.7",

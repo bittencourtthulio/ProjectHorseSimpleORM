@@ -18,6 +18,7 @@ type
     FLASTTRANSACTION: TDateTime;
     FCPF: String;
     FCNPJ: String;
+    FPICTURE: string;
     procedure SetNAME (const Value :String);
     function GetNAME :String;
     procedure SetPHONE (const Value :String);
@@ -31,6 +32,7 @@ type
     procedure SetCPF(const Value: String);
     procedure SetCNPJ(const Value: String);
     function GetGUUID: String;
+    procedure SetPICTURE(const Value: string);
   public
     constructor Create;
     destructor Destroy; override;
@@ -52,6 +54,8 @@ type
     property CPF : String read FCPF write SetCPF;
     [Campo('CNPJ')]
     property CNPJ : String read FCNPJ write SetCNPJ;
+    [Campo('PICTURE')]
+    property PICTURE : string read FPICTURE write SetPICTURE;
 end;
 
 implementation
@@ -118,6 +122,11 @@ end;
 procedure TUsers.SetPHONE (const Value :String);
 begin
   FPHONE := Value;
+end;
+
+procedure TUsers.SetPICTURE(const Value: string);
+begin
+  FPICTURE := Value;
 end;
 
 function TUsers.GetPHONE :String;

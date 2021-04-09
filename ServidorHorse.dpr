@@ -8,6 +8,7 @@ uses
   System.SysUtils,
   Horse,
   System.Classes,
+  Horse.ServerStatic,
   ServerHorse.Model.Connection in 'src\Model\Connection\ServerHorse.Model.Connection.pas',
   ServerHorse.Model.DAO in 'src\Model\DAO\ServerHorse.Model.DAO.pas',
   ServerHorse.Model.Entity.USERS in 'src\Model\Entity\ServerHorse.Model.Entity.USERS.pas',
@@ -22,5 +23,6 @@ uses
 begin
   ServerHorse.Routers.Users.Registry;
   ServerHorse.Routers.Customers.Registry;
+  THorse.Use(ServerStatic('public'));
   THorse.Listen(9000);
 end.
