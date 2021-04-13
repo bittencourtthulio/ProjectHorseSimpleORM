@@ -55,7 +55,7 @@ begin
       iController.This
         .DAO
           .SQL
-            .Where('GUUID = ' + QuotedStr('{' + Req.Params['ID'] + '}' ))
+            .Where('GUUID = ' + QuotedStr(Req.Params['ID']))
           .&End
         .Find;
 
@@ -71,7 +71,7 @@ begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
         if not vBody.TryGetValue<String>('guuid', aGuuid) then
-          vBody.AddPair('guuid', TGUID.NewGuid.ToString());
+          vBody.AddPair('guuid', TServerUtils.New.AdjustGuuid(TGUID.NewGuid.ToString()));
         TController.New.CUSTOMERS.This.Insert(vBody);
         Res.Status(200).Send<TJsonObject>(vBody);
       except
@@ -88,7 +88,7 @@ begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
         if not vBody.TryGetValue<String>('guuid', aGuuid) then
-          vBody.AddPair('guuid', '{' + Req.Params['ID'] + '}' );
+          vBody.AddPair('guuid', Req.Params['ID']);
         TController.New.CUSTOMERS.This.Update(vBody);
         Res.Status(200).Send<TJsonObject>(vBody);
       except
@@ -100,7 +100,7 @@ begin
   procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     begin
       try
-        TController.New.CUSTOMERS.This.Delete('guuid', QuotedStr('{' + Req.Params['id'] + '}'));
+        TController.New.CUSTOMERS.This.Delete('guuid', QuotedStr(Req.Params['id']));
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');

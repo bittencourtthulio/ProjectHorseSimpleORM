@@ -38,10 +38,13 @@ begin
       iController.This
         .DAO
           .SQL
+            .Fields('USERS.*, ')
+            .Fields('OCCUPATION.DESCRIPTION AS OCCUPATION ')
             .Where(TServerUtils.New.LikeFind(Req))
+            .Join('LEFT JOIN OCCUPATION ON OCCUPATION.GUUID = USERS.IDOCCUPATION')
             .OrderBy(TServerUtils.New.OrderByFind(Req))
           .&End
-        .Find;
+        .Find(False);
 
       Res.Send<TJsonArray>(iController.This.DataSetAsJsonArray);
     end)
@@ -55,7 +58,7 @@ begin
       iController.This
         .DAO
           .SQL
-            .Where('GUUID = ' + QuotedStr('{' + Req.Params['ID'] + '}' ))
+            .Where('GUUID = ' + QuotedStr(Req.Params['ID']))
           .&End
         .Find;
 
@@ -71,7 +74,7 @@ begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
         if not vBody.TryGetValue<String>('guuid', aGuuid) then
-          vBody.AddPair('guuid', TGUID.NewGuid.ToString());
+          vBody.AddPair('guuid', TServerUtils.New.AdjustGuuid(TGUID.NewGuid.ToString()));
         TController.New.USERS.This.Insert(vBody);
         Res.Status(200).Send<TJsonObject>(vBody);
       except
@@ -88,7 +91,7 @@ begin
       vBody := TJSONObject.ParseJSONValue(Req.Body) as TJSONObject;
       try
         if not vBody.TryGetValue<String>('guuid', aGuuid) then
-          vBody.AddPair('guuid', '{' + Req.Params['ID'] + '}' );
+          vBody.AddPair('guuid', Req.Params['ID'] );
         TController.New.USERS.This.Update(vBody);
         Res.Status(200).Send<TJsonObject>(vBody);
       except
@@ -103,7 +106,7 @@ begin
     aTeste: string;
   begin
       try
-        TController.New.USERS.This.Delete('guuid', QuotedStr('{' + Req.Params['id'] + '}'));
+        TController.New.USERS.This.Delete('guuid', QuotedStr(Req.Params['id']));
         Res.Status(200).Send('');
       except
         Res.Status(500).Send('');

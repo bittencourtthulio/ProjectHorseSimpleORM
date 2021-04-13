@@ -98,6 +98,18 @@
         <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.CUSTOMERS.pas"/>
         <DCCReference Include="src\Routers\ServerHorse.Routers.Customers.pas"/>
         <DCCReference Include="src\Utils\ServerHorse.Utils.pas"/>
+        <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.OCCUPATION.pas"/>
+        <DCCReference Include="src\Routers\ServerHorse.Routers.Occupations.pas"/>
+        <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.COUNTRIES.pas"/>
+        <DCCReference Include="src\Routers\ServerHorse.Routers.Countries.pas"/>
+        <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.STATES.pas"/>
+        <DCCReference Include="src\Routers\ServerHorse.Routers.States.pas"/>
+        <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.CITIES.pas"/>
+        <DCCReference Include="src\Routers\ServerHorse.Routers.Cities.pas"/>
+        <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.COMPANIES.pas"/>
+        <DCCReference Include="src\Routers\ServerHorse.Routers.Companies.pas"/>
+        <DCCReference Include="src\Model\Entity\ServerHorse.Model.Entity.AREASEXPERTISE.pas"/>
+        <DCCReference Include="src\Routers\ServerHorse.Routers.AreasExpertise.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

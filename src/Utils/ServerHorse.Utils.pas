@@ -10,6 +10,7 @@ type
     ['{6789969D-BF76-432A-B482-86CED1FB8D10}']
     function LikeFind ( aReq : THorseRequest ) : String;
     function OrderByFind ( aReq : THorseRequest ) : String;
+    function AdjustGuuid ( aValue : String ) : String;
   end;
 
   TServerUtils = class(TInterfacedObject, iServerUtils)
@@ -20,6 +21,7 @@ type
     class function New : iServerUtils;
     function LikeFind ( aReq : THorseRequest ) : String;
     function OrderByFind ( aReq : THorseRequest ) : String;
+    function AdjustGuuid ( aValue : String ) : String;
 
   end;
 implementation
@@ -28,6 +30,12 @@ uses
   System.Classes, System.SysUtils;
 
 { TServerUtils }
+
+function TServerUtils.AdjustGuuid(aValue: String): String;
+begin
+  Result := StringReplace(aValue, '{', '', [rfReplaceAll]);
+  Result := StringReplace(Result, '}', '', [rfReplaceAll]);
+end;
 
 constructor TServerUtils.Create;
 begin

@@ -42,8 +42,8 @@ type
     property NAME :String read GetNAME write SetNAME;
     [Campo('PHONE')]
     property PHONE :String read GetPHONE write SetPHONE;
-    [Campo('OCCUPATION')]
-    property OCCUPATION :String read GetOCCUPATION write SetOCCUPATION;
+    [Campo('IDOCCUPATION')]
+    property IDOCCUPATION :String read GetOCCUPATION write SetOCCUPATION;
     [Campo('BALANCE')]
     property BALANCE : Currency read FBALANCE write SetBALANCE;
     [Campo('BIRTHDATE')]
