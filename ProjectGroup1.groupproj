@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{22CAC73A-AD0D-41D4-9393-1F575C1709F3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ServidorHorse.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="modules\simpleorm\SimpleORM.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ServidorHorse">
+        <MSBuild Projects="ServidorHorse.dproj"/>
+    </Target>
+    <Target Name="ServidorHorse:Clean">
+        <MSBuild Projects="ServidorHorse.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ServidorHorse:Make">
+        <MSBuild Projects="ServidorHorse.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SimpleORM">
+        <MSBuild Projects="modules\simpleorm\SimpleORM.dproj"/>
+    </Target>
+    <Target Name="SimpleORM:Clean">
+        <MSBuild Projects="modules\simpleorm\SimpleORM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimpleORM:Make">
+        <MSBuild Projects="modules\simpleorm\SimpleORM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ServidorHorse;SimpleORM"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ServidorHorse:Clean;SimpleORM:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ServidorHorse:Make;SimpleORM:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

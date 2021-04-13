@@ -67,23 +67,17 @@ begin
       Res.Send<TJsonArray>(iController.This.DataSetAsJsonArray);
     end)
 
-  .Post('/users/stream', //Passado no atributo do campo imagem do front
+  .Post('/users/stream',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     var
       LStream: TMemoryStream;
     begin
-      if not DirectoryExists((ExtractFilePath(application.exename))+'imagens\'+Req.Headers['Path']) then
-        ForceDirectories((ExtractFilePath(application.exename))+'imagens\'+Req.Headers['Path']);
+      if not DirectoryExists((ExtractFilePath(application.exename))+'public\'+Req.Headers['Path']) then
+        ForceDirectories((ExtractFilePath(application.exename))+'public\'+Req.Headers['Path']);
 
       LStream := Req.Body<TMemoryStream>;
-      LStream.SaveToFile(extractfilepath(application.exename)+'imagens\'+Req.Headers['Path']+'\'+Req.Headers['FileName']);
-      if Req.Headers['Host'] = 'localhost' then
-       begin
-         res.Send(extractfilepath(application.exename)+'imagens\'+Req.Headers['Path']+'\'+Req.Headers['FileName']).Status(201);
-       end else
-        begin
-          Res.Send('http://'+Req.Headers['Host']+'/imagens/'+stringreplace(Req.Headers['Path'],'\','/',[rfReplaceAll, rfIgnoreCase])+'/'+Req.Headers['FileName']).Status(201);
-        end;
+      LStream.SaveToFile(extractfilepath(application.exename)+'public\'+Req.Headers['Path']+'\'+Req.Headers['FileName']);
+      Res.Send('/'+stringreplace(Req.Headers['Path'],'\','/',[rfReplaceAll, rfIgnoreCase])+'/'+Req.Headers['FileName']).Status(201);
     end)
 
 
