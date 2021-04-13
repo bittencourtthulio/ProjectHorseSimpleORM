@@ -6,6 +6,7 @@ uses
   System.JSON,
   Horse,
   Horse.Jhonson,
+  Horse.OctetStream,
   Horse.CORS,
   ServerHorse.Controller;
 
@@ -19,7 +20,7 @@ uses
   ServerHorse.Model.Entity.USERS,
   System.SysUtils,
   ServerHorse.Utils,
-  Horse.Paginate;
+  Horse.Paginate, Vcl.Forms;
 
 
 procedure Registry;
@@ -28,6 +29,7 @@ begin
   .Use(Paginate)
   .Use(Jhonson)
   .Use(CORS)
+  .Use(OctetStream)
 
   .Get('/users',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
@@ -64,6 +66,26 @@ begin
 
       Res.Send<TJsonArray>(iController.This.DataSetAsJsonArray);
     end)
+
+  .Post('/users/stream', //Passado no atributo do campo imagem do front
+    procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    var
+      LStream: TMemoryStream;
+    begin
+      if not DirectoryExists((ExtractFilePath(application.exename))+'imagens\'+Req.Headers['Path']) then
+        ForceDirectories((ExtractFilePath(application.exename))+'imagens\'+Req.Headers['Path']);
+
+      LStream := Req.Body<TMemoryStream>;
+      LStream.SaveToFile(extractfilepath(application.exename)+'imagens\'+Req.Headers['Path']+'\'+Req.Headers['FileName']);
+      if Req.Headers['Host'] = 'localhost' then
+       begin
+         res.Send(extractfilepath(application.exename)+'imagens\'+Req.Headers['Path']+'\'+Req.Headers['FileName']).Status(201);
+       end else
+        begin
+          Res.Send('http://'+Req.Headers['Host']+'/imagens/'+stringreplace(Req.Headers['Path'],'\','/',[rfReplaceAll, rfIgnoreCase])+'/'+Req.Headers['FileName']).Status(201);
+        end;
+    end)
+
 
   .Post('/users',
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
