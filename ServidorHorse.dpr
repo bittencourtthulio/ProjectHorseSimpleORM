@@ -30,7 +30,11 @@ uses
   ServerHorse.Model.Entity.COMPANIES in 'src\Model\Entity\ServerHorse.Model.Entity.COMPANIES.pas',
   ServerHorse.Routers.Companies in 'src\Routers\ServerHorse.Routers.Companies.pas',
   ServerHorse.Model.Entity.AREASEXPERTISE in 'src\Model\Entity\ServerHorse.Model.Entity.AREASEXPERTISE.pas',
-  ServerHorse.Routers.AreasExpertise in 'src\Routers\ServerHorse.Routers.AreasExpertise.pas';
+  ServerHorse.Routers.AreasExpertise in 'src\Routers\ServerHorse.Routers.AreasExpertise.pas',
+  ServerHorse.Model.Entity.BANKACCOUNTS in 'src\Model\Entity\ServerHorse.Model.Entity.BANKACCOUNTS.pas',
+  ServerHorse.Routers.BankAccounts in 'src\Routers\ServerHorse.Routers.BankAccounts.pas',
+  ServerHorse.Model.Entity.TYPESBANKACCOUNTS in 'src\Model\Entity\ServerHorse.Model.Entity.TYPESBANKACCOUNTS.pas',
+  ServerHorse.Routers.TypesBankAccounts in 'src\Routers\ServerHorse.Routers.TypesBankAccounts.pas';
 
 begin
   ServerHorse.Routers.Users.Registry;
@@ -41,6 +45,8 @@ begin
   ServerHorse.Routers.Cities.Registry;
   ServerHorse.Routers.Companies.Registry;
   ServerHorse.Routers.AreasExpertise.Registry;
+  ServerHorse.Routers.BankAccounts.Registry;
+  ServerHorse.Routers.TypesBankAccounts.Registry;
   THorse.Use(ServerStatic('public'));
   THorse.Listen(9000);
 end.

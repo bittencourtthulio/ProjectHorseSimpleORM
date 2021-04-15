@@ -10,8 +10,11 @@ uses
   ServerHorse.Model.Entity.OCCUPATION,
   ServerHorse.Model.Entity.COUNTRIES,
   ServerHorse.Model.Entity.STATES,
-  ServerHorse.Model.Entity.CITIES, ServerHorse.Model.Entity.COMPANIES,
-  ServerHorse.Model.Entity.AREASEXPERTISE;
+  ServerHorse.Model.Entity.CITIES,
+  ServerHorse.Model.Entity.COMPANIES,
+  ServerHorse.Model.Entity.AREASEXPERTISE,
+  ServerHorse.Model.Entity.BANKACCOUNTS,
+  ServerHorse.Model.Entity.TYPESBANKACCOUNTS;
 
 type
   TController = class(TInterfacedObject, iController)
@@ -24,17 +27,21 @@ type
       FCities : iControllerEntity<TCITIES>;
       FCompanies : iControllerEntity<TCOMPANIES>;
       FAreasExpertise : iControllerEntity<TAREASEXPERTISE>;
+      FBankAccounts : iControllerEntity<TBANKACCOUNTS>;
+      FTYPESBANKACCOUNTS : iControllerEntity<TTYPESBANKACCOUNTS>;
     public
       constructor Create;
       destructor Destroy; override;
       class function New : iController;
       function AREASEXPERTISE : iControllerEntity<TAREASEXPERTISE>;
+      function BANKACCOUNTS : iControllerEntity<TBANKACCOUNTS>;
       function CITIES : iControllerEntity<TCITIES>;
       function COMPANIES : iControllerEntity<TCOMPANIES>;
       function COUNTRIES : iControllerEntity<TCOUNTRIES>;
       function CUSTOMERS : iControllerEntity<TCUSTOMERS>;
       function OCCUPATION : iControllerEntity<TOCCUPATION>;
       function STATES : iControllerEntity<TSTATES>;
+      function TYPESBANKACCOUNTS : iControllerEntity<TTYPESBANKACCOUNTS>;
       function USERS : iControllerEntity<TUSERS>;
   end;
 
@@ -48,6 +55,14 @@ begin
     FAreasExpertise := TControllerGeneric<TAREASEXPERTISE>.New(Self);
 
   Result := FAreasExpertise;
+end;
+
+function TController.BANKACCOUNTS: iControllerEntity<TBANKACCOUNTS>;
+begin
+  if not Assigned(FBankAccounts) then
+    FBankAccounts := TControllerGeneric<TBANKACCOUNTS>.New(Self);
+
+  Result := FBankAccounts;
 end;
 
 function TController.CITIES: iControllerEntity<TCITIES>;
@@ -112,6 +127,14 @@ begin
     FStates := TControllerGeneric<TSTATES>.New(Self);
 
   Result := FStates;
+end;
+
+function TController.TYPESBANKACCOUNTS: iControllerEntity<TTYPESBANKACCOUNTS>;
+begin
+  if not Assigned(FTYPESBANKACCOUNTS) then
+    FTYPESBANKACCOUNTS := TControllerGeneric<TTYPESBANKACCOUNTS>.New(Self);
+
+  Result := FTYPESBANKACCOUNTS;
 end;
 
 function TController.USERS: iControllerEntity<TUSERS>;

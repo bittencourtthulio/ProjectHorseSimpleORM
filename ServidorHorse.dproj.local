@@ -1,7 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2020/12/18 15:20:14.000.897,C:\Users\thuli\Documents\Embarcadero\Studio\Projects\Project2.dproj=D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\ServidorHorse.dproj</Transaction>
-    <Transaction>2020/12/18 16:05:47.000.655,D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\src\Sockets\ServidorHorse.Sockets.Bird.pas=D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\Unit1.pas</Transaction>
-  </Transactions>
+    <Transaction>2020/12/18 15:20:14.000.897,D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\ServidorHorse.dproj=C:\Users\thuli\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2020/12/18 16:05:47.000.655,D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\Unit1.pas=D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\src\Sockets\ServidorHorse.Sockets.Bird.pas</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="src"/>
+    <File Path="src\Controller"/>
+    <File Path="src\Controller\ServerHorse.Controller.Generic.pas"/>
+    <File Path="src\Controller\ServerHorse.Controller.Interfaces.pas"/>
+    <File Path="src\Controller\ServerHorse.Controller.pas"/>
+    <File Path="src\Model"/>
+    <File Path="src\Model\Connection"/>
+    <File Path="src\Model\Connection\ServerHorse.Model.Connection.pas"/>
+    <File Path="src\Model\DAO"/>
+    <File Path="src\Model\DAO\ServerHorse.Model.DAO.pas"/>
+    <File Path="src\Model\Entity"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.AREASEXPERTISE.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.BANKACCOUNTS.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.CITIES.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.COMPANIES.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.COUNTRIES.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.CUSTOMERS.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.OCCUPATION.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.STATES.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.TYPESBANKACCOUNTS.pas"/>
+    <File Path="src\Model\Entity\ServerHorse.Model.Entity.USERS.pas"/>
+    <File Path="src\Routers"/>
+    <File Path="src\Routers\ServerHorse.Routers.AreasExpertise.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.BankAccounts.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.Cities.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.Companies.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.Countries.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.Customers.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.Occupations.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.States.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.Users.pas"/>
+    <File Path="src\Routers\ServerHorse.Routers.TypesBankAccounts.pas"/>
+    <File Path="src\Utils"/>
+    <File Path="src\Utils\ServerHorse.Utils.pas"/>
+  </ProjectSortOrder>
 </BorlandProject>

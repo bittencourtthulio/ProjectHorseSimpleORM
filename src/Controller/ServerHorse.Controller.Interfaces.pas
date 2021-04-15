@@ -11,21 +11,25 @@ uses
   ServerHorse.Model.Entity.STATES,
   ServerHorse.Model.Entity.CITIES,
   ServerHorse.Model.Entity.COMPANIES,
-  ServerHorse.Model.Entity.AREASEXPERTISE;
+  ServerHorse.Model.Entity.AREASEXPERTISE,
+  ServerHorse.Model.Entity.BANKACCOUNTS,
+  ServerHorse.Model.Entity.TYPESBANKACCOUNTS;
 
 type
   iControllerEntity<T : class> = interface;
 
   iController = interface
     ['{6A60E341-CB38-4034-B924-FB9B49D98577}']
-    function USERS : iControllerEntity<TUSERS>;
-    function CUSTOMERS : iControllerEntity<TCUSTOMERS>;
-    function OCCUPATION : iControllerEntity<TOCCUPATION>;
-    function COUNTRIES : iControllerEntity<TCOUNTRIES>;
-    function STATES : iControllerEntity<TSTATES>;
+    function AREASEXPERTISE : iControllerEntity<TAREASEXPERTISE>;
+    function BANKACCOUNTS : iControllerEntity<TBANKACCOUNTS>;
     function CITIES : iControllerEntity<TCITIES>;
     function COMPANIES : iControllerEntity<TCOMPANIES>;
-    function AREASEXPERTISE : iControllerEntity<TAREASEXPERTISE>;
+    function COUNTRIES : iControllerEntity<TCOUNTRIES>;
+    function CUSTOMERS : iControllerEntity<TCUSTOMERS>;
+    function OCCUPATION : iControllerEntity<TOCCUPATION>;
+    function STATES : iControllerEntity<TSTATES>;
+    function TYPESBANKACCOUNTS : iControllerEntity<TTYPESBANKACCOUNTS>;
+    function USERS : iControllerEntity<TUSERS>;
   end;
 
   iControllerEntity<T : class> = interface
