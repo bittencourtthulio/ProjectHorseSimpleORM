@@ -7,6 +7,7 @@ program ServidorHorse;
 uses
   System.SysUtils,
   Horse,
+  Horse.JWT,
   System.Classes,
   Horse.ServerStatic,
   ServerHorse.Model.Connection in 'src\Model\Connection\ServerHorse.Model.Connection.pas',
@@ -47,6 +48,7 @@ begin
   ServerHorse.Routers.AreasExpertise.Registry;
   ServerHorse.Routers.BankAccounts.Registry;
   ServerHorse.Routers.TypesBankAccounts.Registry;
+  //THorse.Use(HorseJWT('67E685B6-ECC4-4967-8B31-BACB23F56417'));
   THorse.Use(ServerStatic('public'));
   THorse.Listen(9000);
 end.

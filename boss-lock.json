@@ -4,8 +4,8 @@
 	"installedModules": {
 		"github.com/hashload/horse": {
 			"name": "horse",
-			"version": "v2.0.6",
-			"hash": "cca1769dfab681cfd26ae8499f9045e1",
+			"version": "2.0.13",
+			"hash": "985da2054d3c705bc211797c653e47ba",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
@@ -28,8 +28,8 @@
 		},
 		"https://github.com/bittencourtthulio/simpleorm": {
 			"name": "simpleorm",
-			"version": "2.02.01",
-			"hash": "312257d6314f98dbdb11275693294ea1",
+			"version": "2.02.04",
+			"hash": "2bad2914a09608a6a14997ca2bde9630",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
@@ -60,8 +60,8 @@
 		},
 		"https://github.com/hashload/horse-cors": {
 			"name": "horse-cors",
-			"version": "1.0.2",
-			"hash": "f1fd91acb4d43c9a778249d447027f16",
+			"version": "1.0.3",
+			"hash": "248f37dd844f5a4c4ff78364e5a86027",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
@@ -84,16 +84,16 @@
 		},
 		"https://github.com/hashload/jhonson": {
 			"name": "jhonson",
-			"version": "1.0.7",
-			"hash": "e0a2cfad431f565769ebe2815299924b",
+			"version": "1.1.1",
+			"hash": "5740da7df1068b882117a68df8098c9a",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
 		},
 		"https://github.com/viniciussanchez/dataset-serialize": {
 			"name": "dataset-serialize",
-			"version": "v2.2.1",
-			"hash": "646b2573e09830d31dbccd05531e50ed",
+			"version": "v2.3.0",
+			"hash": "916555f057218c63d26c06a3c0bd12f4",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2020/12/18 15:20:14.000.897,D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\ServidorHorse.dproj=C:\Users\thuli\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
-    <Transaction>2020/12/18 16:05:47.000.655,D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\Unit1.pas=D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\src\Sockets\ServidorHorse.Sockets.Bird.pas</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <Transaction>2020/12/18 15:20:14.000.897,C:\Users\thuli\Documents\Embarcadero\Studio\Projects\Project2.dproj=D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\ServidorHorse.dproj</Transaction>
+    <Transaction>2020/12/18 16:05:47.000.655,D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\src\Sockets\ServidorHorse.Sockets.Bird.pas=D:\Projetos\Cursos\ProgramacaoReativa Delphi\ServidorHorse\Unit1.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="src"/>
     <File Path="src\Controller"/>
     <File Path="src\Controller\ServerHorse.Controller.Generic.pas"/>
